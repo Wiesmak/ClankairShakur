@@ -34,9 +34,9 @@ spec:
         - name: output
           workspace: source
       params:
-        - name: url
+        - name: URL
           value: $(params.repo-url)
-        - name: revision
+        - name: REVISION
           value: $(params.revision)
 
     - name: build
