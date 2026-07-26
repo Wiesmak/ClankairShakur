@@ -9,7 +9,9 @@ spec:
     - name: revision
       type: string
       default: master
-
+    - name: image-tag
+      type: string
+      default: latest
     - name: image
       type: string
       default: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/clankair-shakur:$(params.image-tag)
@@ -20,41 +22,44 @@ spec:
   tasks:
     - name: clone
       taskRef:
-        kind: ClusterTask
-        name: git-clone
-
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
       workspaces:
         - name: output
           workspace: source
-
       params:
         - name: url
           value: $(params.repo-url)
-
         - name: revision
           value: $(params.revision)
 
     - name: build
       runAfter:
         - clone
-
       taskRef:
-        kind: ClusterTask
-        name: buildah
-
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: buildah
+          - name: namespace
+            value: openshift-pipelines
       workspaces:
         - name: source
           workspace: source
-
       params:
         - name: IMAGE
           value: $(params.image)
-
         - name: DOCKERFILE
           value: ./Dockerfile
-
         - name: CONTEXT
           value: .
-
         - name: TLSVERIFY
           value: "true"
