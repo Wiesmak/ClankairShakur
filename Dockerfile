@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi9/python-314 AS builder
 USER root
-COPY --from=ghcr.io/astral-sh/uv:python3.14-alpine /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 USER 1001
 WORKDIR /opt/app-root/src
