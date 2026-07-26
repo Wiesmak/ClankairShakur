@@ -37,6 +37,12 @@ spec:
                   name: clankair-shakur
                   key: thread-limit
                   optional: true
+          volumeMounts:
+            - name: temp
+              mountPath: /tmp
+          volumes:
+          - name: tmp
+            emptyDir: {}
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
