@@ -10,7 +10,7 @@ spec:
 
   params:
     - name: repo-url
-      value: https://github.com/wiesmak/clankair-shakur.git
+      value: https://github.com/wiesmak/clankairshakur.git
 
     - name: revision
       value: master

@@ -23,7 +23,7 @@ FROM registry.access.redhat.com/ubi9/python-314-minimal
 
 LABEL org.opencontainers.image.title="Clankair Shakur" \
       org.opencontainers.image.description="Discord bot for Umamusume-related statistics" \
-      org.opencontainers.image.source="https://github.com/wiesmak/clankair-shakur" \
+      org.opencontainers.image.source="https://github.com/wiesmak/clankairshakur" \
       org.opencontainers.image.version="1.0.0" \
       org.opencontainers.image.vendor="Umamusume Polska" \
       org.opencontainers.image.licenses="MIT"

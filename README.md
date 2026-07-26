@@ -54,7 +54,7 @@ The provided ConfigMap contains `thread-limit: "3"` by default.
 ### 1. Clone the repository
 
 ```powershell
-git clone https://github.com/wiesmak/clankair-shakur.git
+git clone https://github.com/wiesmak/clankairshakur.git
 cd clankair-shakur
 ```
 
