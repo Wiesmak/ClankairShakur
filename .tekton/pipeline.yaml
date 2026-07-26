@@ -11,7 +11,7 @@ spec:
       type: string
     - name: revision
       type: string
-      default: main
+      default: master
 
     - name: image
       type: string
