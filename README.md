@@ -265,5 +265,7 @@ If you use Argo CD image updater or a CI pipeline, update the image tag in Kusto
 
 ## License
 
-See the repository metadata or upstream project for licensing details.
+This project is licensed under the Apache License 2.0.
+
+See `LICENSE` for the full text.
 
