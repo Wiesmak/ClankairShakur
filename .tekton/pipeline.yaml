@@ -12,7 +12,7 @@ spec:
 
     - name: image
       type: string
-      default: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/clankair-shakur:$(params.revision)
+      default: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/clankair-shakur:$(params.image-tag)
 
   workspaces:
     - name: source

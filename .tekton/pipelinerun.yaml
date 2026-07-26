@@ -13,10 +13,10 @@ spec:
 
   params:
     - name: repo-url
-      value: https://github.com/wiesmak/clankairshakur.git
+      value: "{{ repo_url }}"
 
     - name: revision
-      value: master
+      value: "{{ revision }}"
 
   workspaces:
     - name: source
