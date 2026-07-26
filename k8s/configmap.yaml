@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clankair-shakur
+  labels:
+    app.kubernetes.io/instance: clankair-shakur-bot
+    app.kubernetes.io/name: clankair-shakur
+data:
+  thread-limit: "3"

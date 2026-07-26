@@ -1,0 +1,63 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: build-clankair-shakur
+  annotations:
+    pipelinesascode.tekton.dev/on-event: "[push]"
+    pipelinesascode.tekton.dev/on-target-branch: "[refs/tags/*]"
+spec:
+  params:
+    - name: repo-url
+      type: string
+    - name: revision
+      type: string
+      default: main
+
+    - name: image
+      type: string
+      default: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/clankair-shakur:$(params.revision)
+
+  workspaces:
+    - name: source
+
+  tasks:
+    - name: clone
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+
+      workspaces:
+        - name: output
+          workspace: source
+
+      params:
+        - name: url
+          value: $(params.repo-url)
+
+        - name: revision
+          value: $(params.revision)
+
+    - name: build
+      runAfter:
+        - clone
+
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+
+      workspaces:
+        - name: source
+          workspace: source
+
+      params:
+        - name: IMAGE
+          value: $(params.image)
+
+        - name: DOCKERFILE
+          value: ./Dockerfile
+
+        - name: CONTEXT
+          value: .
+
+        - name: TLSVERIFY
+          value: "true"
